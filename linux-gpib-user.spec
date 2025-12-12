@@ -6,7 +6,7 @@
 
 Name:		linux-gpib-user
 Version:	4.3.7
-Release:	1
+Release:	2
 Summary:	The Linux GPIB support package for the kernel GPIB (IEEE 488) modules.
 URL:		https://sourceforge.net/projects/linux-gpib/
 License:	GPL-2.0-only
