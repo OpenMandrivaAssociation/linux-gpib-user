@@ -16,6 +16,7 @@ Source0:	https://sourceforge.net/projects/linux-gpib/files/linux-gpib%20for%203.
 #BuildSystem:	autotools
 
 BuildRequires:	autoconf automake slibtool
+BuildRequires:	libtool-base
 BuildRequires:	bison
 BuildRequires:	docbook2x
 BuildRequires:	docbook-utils
