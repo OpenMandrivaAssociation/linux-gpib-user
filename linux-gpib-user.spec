@@ -27,6 +27,7 @@ BuildRequires:	opensp
 BuildRequires:	pkgconfig
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(tcl)
+BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	xsltproc
 
