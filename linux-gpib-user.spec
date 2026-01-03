@@ -22,6 +22,7 @@ BuildRequires:	docbook-utils
 BuildRequires:	docbook-style-xsl
 BuildRequires:	docbook-style-xsl-ns
 BuildRequires:	flex
+BuildRequires:	make
 BuildRequires:	opensp
 BuildRequires:	pkgconfig
 BuildRequires:	pkgconfig(python)
@@ -92,7 +93,6 @@ echo $PWD
 tar xf %{name}-%{version}.tar.gz -C %{builddir}/%{oname}-%{version} --strip-components=1
 
 %build
-./configure --help
 ./configure  \
 	--prefix=%{_prefix} \
 	--exec-prefix=%{_prefix} \
