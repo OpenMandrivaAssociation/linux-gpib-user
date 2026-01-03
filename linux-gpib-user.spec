@@ -16,7 +16,6 @@ Source0:	https://sourceforge.net/projects/linux-gpib/files/linux-gpib%20for%203.
 #BuildSystem:	autotools
 
 BuildRequires:	autoconf automake slibtool
-BuildRequires:	libtool-base
 BuildRequires:	bison
 BuildRequires:	docbook2x
 BuildRequires:	docbook-utils
@@ -95,16 +94,28 @@ echo $PWD
 tar xf %{name}-%{version}.tar.gz -C %{builddir}/%{oname}-%{version} --strip-components=1
 
 %build
+# autotools attempts to use pip to find setuptools online and fails
+# disable python binding build & py_build it separate
 ./configure  \
 	--prefix=%{_prefix} \
 	--exec-prefix=%{_prefix} \
 	--libdir=%{_libdir} \
 	--includedir=%{_includedir} \
-	--sysconfdir=%{_sysconfdir}
+	--sysconfdir=%{_sysconfdir} \
+	--disable-python-binding
 %make_build
+# build python module
+export LDFLAGS="%{ldflags} -lpython%{pyver}"
+pushd language/python
+%py_build
+popd
 
 %install
 %make_install
+# build python module
+pushd language/python
+%py_install
+popd
 
 # Copy device readme files into docdir
 cp -f ./{README.HAMEG,README.hp82335} %{buildroot}%{_docdir}/%{name}
